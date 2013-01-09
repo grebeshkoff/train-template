@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Template</title>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://co-prg-05/_layouts/sp.js"></script>
+        <script >
+            $(document).ready(
+                function(){
+
+                    function ReadListItem() {
+                        var listTitle = "Airports";
+
+                        //Get the current client context
+                        context = SP.ClientContext.get_current();
+                        var airportList = context.get_web().get_lists().getByTitle(listTitle);
+
+                        var camlQuery = SP.CamlQuery.createAllItemsQuery();
+
+                        this.listItems = airportList.getItems(camlQuery);
+
+                        context.load(listItems);
+
+                        context.executeQueryAsync(ReadListItemSucceeded, ReadListItemFailed);
+                    }
+
+                    function ReadListItemSucceeded(sender, args) {
+                        var itemsString = '';
+                        var enumerator = listItems.getEnumerator();
+
+                        while (enumerator.moveNext()) {
+                            var listItem = enumerator.get_current();
+                            itemsString += 'AirportName: ' + listItem.get_item('AirportName') +
+                                    ' AirportCode: ' + listItem.get_id().toString() + '\n';
+                        }
+
+                        alert(itemsString);
+                    }
+
+                    function ReadListItemFailed(sender, args) {
+                        alert('Request failed. ' + args.get_message() + '\n' + args.get_stackTrace());
+                    }
+
+
+
+                    ReadListItem();
+
+
+                    var sel = $("#select")
+                    var values = $("#select>option").map(function() { return $(this).val(); });
+                    var s = ""
+
+
+                    $.each(values, function(i, l){
+                        s += l
+                        s +="#"
+                    });
+                    $("#lable").text(s);
+                }
+            )
+        </script>
+	</head>
+	<body>
+        <h1 id="lable">???</h1>
+
+
+        <form action="#">
+            <select name="select" id="select" multiple="multiple">
+                <option id="one" value="1">one</option>
+                <option id="two" value="2">two</option>
+                <option id="three" value="3">three</option>
+            </select>
+        </form>
+	</body>
+</html>
+
+

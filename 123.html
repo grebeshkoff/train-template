@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    $(document).ready(function () { ExecuteOrDelayUntilScriptLoaded(loadConstants, "sp.js"); });
+
+    function loadConstants() {
+
+        var ctx = new SP.ClientContext.get_current();
+
+        this.site = ctx.get_site();
+        ctx.load(this.site );
+        this.web = ctx.get_web();
+        ctx.load(this.web);
+        ctx.executeQueryAsync(Function.createDelegate(this, this.onSuccess), Function.createDelegate(this, this.onFail));
+
+
+    }
+
+    function onSuccess(sender, args) {
+        IPC_siteUrl = this.site.get_url();
+        IPC_siteId = this.site.get_id();
+    }
+    function onFail(sender, args) {
+        console.log(args.get_message());
+    }
+
+    ReadListItem()
+
+
+
+    var sel = $("#select")
+    var values = $("#select>option").map(function() { return $(this).val(); });
+    var s = ""
+
+
+    $.each(values, function(i, l){
+        s += l
+        s +="@"
+    });
+    $("#lable").text(s);
+
+</script>
+</body>
+</html>

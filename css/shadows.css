@@ -1,0 +1,63 @@
+
+#red-strip-wrapper {
+    height: 227px;
+    display: block;
+    position: relative;
+}
+
+#strip-red-left-shadow{
+    display: inline-block;
+    background-image: url("../img/red-strip-shadow-left.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+}
+
+#red-strip {
+    background-image: linear-gradient(top, rgb(203,99,90) 0%, rgb(168,50,46) 100%);
+    background-image: -o-linear-gradient(top, rgb(203,99,90) 0%, rgb(168,50,46) 100%);
+    background-image: -moz-linear-gradient(top, rgb(203,99,90) 0%, rgb(168,50,46) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(203,99,90) 0%, rgb(168,50,46) 100%);
+    background-image: -ms-linear-gradient(top, rgb(203,99,90) 0%, rgb(168,50,46) 100%);
+
+    border-left: 1px solid rgba(105, 45, 42, 0.3);
+    border-right: 1px solid rgba(105, 45, 42, 0.3);
+
+    box-shadow: inset 1px 0px 3px 0px rgba(255, 255, 255, 0.2), inset -1px 0px 3px 0px rgba(255, 255, 255, 0.2);
+
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, rgb(203,99,90)),
+        color-stop(1, rgb(168,50,46))
+    );
+    height: 227px;
+
+    width:850px;
+
+    height: 227px;
+    width:852px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+
+}
+
+#strip-red-right-shadow{
+    display: inline-block;
+    background-image: url("../img/red-strip-shadow-right.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 868px;
+}
+
+
+
